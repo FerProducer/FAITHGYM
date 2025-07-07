@@ -2,128 +2,655 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faith Gym - Fortaleza, Salud y Fe</title>
-  <meta name="description" content="Faith Gym, el mejor gimnasio en Chihuahua. Clases, nutrición, streaming, tienda online y más.">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="FAITHGYM: Gimnasio en Chihuahua con clases, entrenadores certificados, agenda online y más. ¡Transforma tu cuerpo y mente!" />
+  <title>FAITHGYM | Transforma tu vida</title>
+  <link rel="icon" href="favicon.ico" />
+
   <style>
-    body { font-family: 'Arial', sans-serif; }
-    .bg-hero {
-      background: url('https://images.unsplash.com/photo-1558611848-73f7eb4001e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center/cover;
+    /* RESET */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #222;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #d32f2f;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #b71c1c;
+      outline: none;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* HEADER */
+    header {
+      background: #d32f2f; /* rojo enérgico */
+      color: white;
+      padding: 1rem 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.4rem 0;
+    }
+    nav ul li a:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* HERO */
+    .hero {
+      background: url('https://github.com/FerProducer/FAITHGYM/blob/main/513119655_1181424167118782_5524151627292012221_n.jpg?raw=true') no-repeat center/cover;
+      color: white;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(10,0,0,0.90);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      background-color: #fff;
+      color: #d32f2f;
+      padding: 0.9rem 2.5rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 10px rgba(211,47,47,0.4);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: #b71c1c;
+      color: white;
+      outline: none;
+    }
+
+    /* SECCIONES */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    section h3 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #d32f2f;
+      font-weight: 700;
+    }
+
+    /* INFORMACION DE CONTACTO */
+    .contact-info {
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #555;
+    }
+    .contact-info strong {
+      color: #222;
+    }
+
+    /* HORARIOS */
+    .schedule-list {
+      max-width: 400px;
+      margin: 0 auto;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: white;
+    }
+    .schedule-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    .schedule-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* FORMULARIO CONTACTO */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(211,47,47,0.1);
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+    form input:focus, form textarea:focus {
+      border-color: #d32f2f;
+      outline: none;
+    }
+    form button {
+      background-color: #d32f2f;
+      color: white;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    form button:hover, form button:focus {
+      background-color: #b71c1c;
+      outline: none;
+    }
+
+    /* SECCION CLASES */
+    .classes-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    }
+    .class-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgb(211 47 47 / 0.15);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .class-card:hover {
+      transform: translateY(-6px);
+    }
+    .class-card h4 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: #d32f2f;
+      font-weight: 700;
+    }
+    .class-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .level-tag {
+      display: inline-block;
+      background: #f44336;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      margin-top: 0.5rem;
+      user-select: none;
+    }
+
+    /* ENTRENADORES */
+    .trainers-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    }
+    .trainer-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(211,47,47,0.2);
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 1rem;
+      user-select: none;
+    }
+    .trainer-photo {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-bottom: 4px solid #d32f2f;
+    }
+    .trainer-info {
+      padding: 1rem;
+    }
+    .trainer-info h4 {
+      margin: 0.5rem 0;
+      color: #d32f2f;
+      font-weight: 700;
+    }
+    .trainer-info p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0;
+    }
+
+    /* GALERIA */
+    .gallery-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 10px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* TESTIMONIOS */
+    .testimonials {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .testimonial {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-style: italic;
+      color: #444;
+      user-select: none;
+    }
+    .testimonial strong {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 700;
+      color: #d32f2f;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: auto;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    footer a {
+      color: #f44336;
+    }
+
+    /* BOTON WHATSAPP FLOTANTE */
+    #whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      transition: background-color 0.3s ease;
+    }
+    #whatsapp-btn:hover, #whatsapp-btn:focus {
+      background-color: #128c4a;
+      outline: none;
+    }
+    #whatsapp-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+      user-select: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero {
+        height: 40vh;
+      }
+      .hero-content h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
-<body class="bg-black text-gray-100">
 
-<!-- Header -->
-<header class="bg-black bg-opacity-90 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-    <h1 class="text-3xl font-bold">FAITH<span class="text-red-600">GYM</span></h1>
-    <nav class="space-x-4 hidden md:block">
-      <a href="#inicio" class="hover:text-red-600">Inicio</a>
-      <a href="#nosotros" class="hover:text-red-600">Nosotros</a>
-      <a href="#servicios" class="hover:text-red-600">Servicios</a>
-      <a href="#precios" class="hover:text-red-600">Membresías</a>
-      <a href="#contacto" class="hover:text-red-600">Contacto</a>
-    </nav>
-  </div>
-</header>
+<body>
 
-<!-- Hero -->
-<section id="inicio" class="bg-hero h-[90vh] flex items-center justify-center text-center">
-  <div class="bg-black bg-opacity-60 p-6 rounded">
-    <h1 class="text-5xl md:text-7xl font-extrabold">FORTALEZA, SALUD Y FE</h1>
-    <p class="mt-4 text-lg md:text-xl">Descubre Faith Gym, donde tu cuerpo y mente se transforman.</p>
-    <a href="#contacto" class="mt-6 inline-block px-8 py-4 bg-red-600 rounded-full text-white font-semibold hover:bg-red-700">Pide tu clase gratis</a>
-  </div>
-</section>
-
-<!-- Nosotros -->
-<section id="nosotros" class="max-w-7xl mx-auto p-8">
-  <h2 class="text-3xl font-bold mb-4 text-red-600">Nosotros</h2>
-  <p class="text-gray-300 leading-relaxed">En Faith Gym creemos en el poder de la disciplina, el entrenamiento y la fe. Fundado en Chihuahua, ofrecemos clases de alta calidad, nutrición personalizada y entrenadores certificados para transformar tu cuerpo y tu vida.</p>
-</section>
-
-<!-- Servicios -->
-<section id="servicios" class="bg-gray-900 p-8">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6 text-red-600">Servicios</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold text-xl mb-2">Clases personalizadas</h3>
-        <p>Rutinas diseñadas para tus objetivos y nivel de experiencia.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold text-xl mb-2">Nutrición</h3>
-        <p>Planes alimenticios hechos por especialistas para potenciar tus resultados.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h3 class="font-semibold text-xl mb-2">Streaming</h3>
-        <p>Clases en vivo y grabadas para entrenar desde cualquier lugar.</p>
-      </div>
+  <!-- HEADER -->
+  <header role="banner">
+    <div class="container">
+      <h1 tabindex="0" aria-label="FAITHGYM - Gimnasio en Chihuahua">FAITHGYM</h1>
+      <nav role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="#clases">Clases</a></li>
+          <li><a href="#entrenadores">Entrenadores</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- Membresías -->
-<section id="precios" class="max-w-7xl mx-auto p-8">
-  <h2 class="text-3xl font-bold mb-6 text-red-600">Membresías</h2>
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="bg-gray-800 p-6 rounded-lg text-center border border-gray-700">
-      <h3 class="font-semibold text-xl mb-2">Básico</h3>
-      <p class="text-red-500 text-2xl mb-4">$500 MXN / mes</p>
-      <p>Acceso a sala de pesas y cardio.</p>
+  <!-- HERO -->
+  <section class="hero" role="img" aria-label="Personas entrenando en gimnasio moderno">
+    <div class="hero-content">
+      <h2 tabindex="0">¡Transforma tu vida en FAITHGYM!</h2>
+      <p>El gimnasio más completo en Chihuahua con entrenadores certificados, clases online y presenciales.</p>
+      <button class="btn-primary" onclick="document.getElementById('reserva').scrollIntoView({behavior:'smooth'})" aria-label="Agenda tu clase gratis">Agenda tu clase gratis</button>
     </div>
-    <div class="bg-gray-800 p-6 rounded-lg text-center border border-gray-700">
-      <h3 class="font-semibold text-xl mb-2">Plus</h3>
-      <p class="text-red-500 text-2xl mb-4">$700 MXN / mes</p>
-      <p>Incluye clases grupales y asesoría nutricional.</p>
-    </div>
-    <div class="bg-gray-800 p-6 rounded-lg text-center border border-gray-700">
-      <h3 class="font-semibold text-xl mb-2">Premium</h3>
-      <p class="text-red-500 text-2xl mb-4">$1000 MXN / mes</p>
-      <p>Acceso total + streaming y plan personalizado.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Galería -->
-<section class="bg-gray-900 p-8">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6 text-red-600">Galería</h2>
-    <div class="grid md:grid-cols-3 gap-4">
-      <img src="https://images.unsplash.com/photo-1579758629937-5cd198d1ea9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Faith Gym" class="rounded-lg">
-      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Faith Gym" class="rounded-lg">
-      <img src="https://images.unsplash.com/photo-1599058917213-fb4b8b0e3d59?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Faith Gym" class="rounded-lg">
+  <!-- INFORMACIÓN DE CONTACTO Y HORARIOS -->
+  <section id="contacto" aria-labelledby="contacto-title">
+    <h3 id="contacto-title">Contacto y Horarios</h3>
+    <div class="contact-info" role="contentinfo">
+      <p><strong>Dirección:</strong> Calle Izalco 1202, Chihuahua, México</p>
+      <p><strong>Teléfono:</strong> <a href="tel:+6144257392" aria-label="Llamar a 614 425 7392">614 425 7392</a></p>
+      <p><strong>Horarios:</strong></p>
+      <ul class="schedule-list">
+        <li><span>Lunes - Viernes</span><span>6:00 a. m. - 10:00 p. m.</span></li>
+        <li><span>Sábado</span><span>9:00 a. m. - 1:00 p. m.</span></li>
+        <li><span>Domingo</span><span>CERRADO</span></li>
+      </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contacto -->
-<section id="contacto" class="p-8">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-3xl font-bold mb-4 text-red-600">Contáctanos</h2>
-    <p>📍 Calle Izalco 1202, Chihuahua, México</p>
-    <p>📞 <a href="tel:6144257392" class="text-red-500">614 425 7392</a></p>
-    <form class="mt-4 grid gap-2">
-      <input type="text" placeholder="Nombre" class="p-2 rounded bg-gray-800 text-white" required>
-      <input type="email" placeholder="Correo electrónico" class="p-2 rounded bg-gray-800 text-white" required>
-      <textarea placeholder="Mensaje" class="p-2 rounded bg-gray-800 text-white" required></textarea>
-      <button type="submit" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">Enviar</button>
+  <!-- SECCIÓN DE CLASES -->
+  <section id="clases" aria-labelledby="clases-title">
+    <h3 id="clases-title">Nuestras Clases</h3>
+    <div class="classes-grid" role="list">
+      <article class="class-card" role="listitem" tabindex="0">
+        <h4>Crossfit</h4>
+        <p>Entrenamiento funcional de alta intensidad para mejorar fuerza y resistencia.</p>
+        <span class="level-tag" aria-label="Nivel avanzado">Avanzado</span>
+      </article>
+      <article class="class-card" role="listitem" tabindex="0">
+        <h4>Spinning</h4>
+        <p>Ejercicio cardiovascular en bicicleta estática para quemar calorías y tonificar piernas.</p>
+        <span class="level-tag" aria-label="Nivel intermedio">Intermedio</span>
+      </article>
+      <article class="class-card" role="listitem" tabindex="0">
+        <h4>Yoga</h4>
+        <p>Clase para mejorar flexibilidad, equilibrio y bienestar mental.</p>
+        <span class="level-tag" aria-label="Nivel principiante">Principiante</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE ENTRENADORES -->
+  <section id="entrenadores" aria-labelledby="entrenadores-title">
+    <h3 id="entrenadores-title">Entrenadores Expertos</h3>
+    <div class="trainers-grid">
+      <article class="trainer-card" tabindex="0">
+        <img src="https://github.com/FerProducer/FAITHGYM/blob/main/481773622_1096592438935289_8431546163838098508_n.jpg?raw=true" alt="Foto entrenador Juan Pérez" class="trainer-photo" loading="lazy" />
+        <div class="trainer-info">
+          <h4>Juan Pérez</h4>
+          <p>Especialista en Crossfit y entrenamiento funcional.</p>
+        </div>
+      </article>
+      <article class="trainer-card" tabindex="0">
+        <img src="https://github.com/FerProducer/FAITHGYM/blob/main/481272658_1096592332268633_4726381379388189347_n.jpg?raw=true" alt="Foto entrenadora María López" class="trainer-photo" loading="lazy" />
+        <div class="trainer-info">
+          <h4>María López</h4>
+          <p>Instructora certificada de Yoga y Pilates.</p>
+        </div>
+      </article>
+      <article class="trainer-card" tabindex="0">
+        <img src="https://github.com/FerProducer/FAITHGYM/blob/main/481986902_1096592268935306_1924984013860206186_n.jpg?raw=true" alt="Foto entrenador Carlos Martínez" class="trainer-photo" loading="lazy" />
+        <div class="trainer-info">
+          <h4>Carlos Martínez</h4>
+          <p>Experto en entrenamiento cardiovascular y spinning.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE FOTOS -->
+  <section id="galeria" aria-labelledby="galeria-title">
+    <h3 id="galeria-title">Galería</h3>
+    <div class="gallery-grid" role="list">
+      <img src="https://github.com/FerProducer/FAITHGYM/blob/main/492044368_1136111868316679_3842983177978937502_n.jpg?raw=true" alt="Personas haciendo ejercicio en el gimnasio" loading="lazy" role="listitem" />
+      <img src="https://github.com/FerProducer/FAITHGYM/blob/main/499537660_1158549922739540_8527879517223916410_n.jpg?raw=true" alt="Máquinas de gimnasio modernas" loading="lazy" role="listitem" />
+      <img src="https://github.com/FerProducer/FAITHGYM/blob/main/493260381_1137618391499360_4368141627225721202_n.jpg?raw=true" alt="Entrenador ayudando a alumno" loading="lazy" role="listitem" />
+      <img src="https://github.com/FerProducer/FAITHGYM/blob/main/502557322_1163811238880075_937692072005915988_n.jpg?raw=true" alt="Clase de spinning" loading="lazy" role="listitem" />
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE CLASES VIRTUALES (Simulada) -->
+  <section aria-labelledby="clasesvirtuales-title">
+    <h3 id="clasesvirtuales-title">Clases Virtuales On Demand</h3>
+    <p style="max-width:600px;margin:0 auto 1.5rem auto;text-align:center;">
+      Accede a nuestras clases grabadas en video y entrena desde casa. <br />
+      (Esta sección está en desarrollo para usuarios registrados).
+    </p>
+    <div style="max-width:600px;margin:0 auto;text-align:center;">
+      <button class="btn-primary" aria-disabled="true" disabled>Acceso solo para miembros</button>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" aria-labelledby="blog-title">
+    <h3 id="blog-title">Blog: Salud y Nutrición</h3>
+    <article style="max-width:700px;margin:0 auto 2rem auto;background:#fff;padding:1rem;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);" tabindex="0">
+      <h4>5 consejos para mejorar tu alimentación</h4>
+      <p>Una dieta balanceada es fundamental para lograr tus objetivos fitness. Incluye proteínas, frutas y verduras, y evita procesados.</p>
+      <a href="#" aria-label="Leer más sobre consejos de alimentación">Leer más</a>
+    </article>
+    <article style="max-width:700px;margin:0 auto 2rem auto;background:#fff;padding:1rem;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);" tabindex="0">
+      <h4>Beneficios del ejercicio cardiovascular</h4>
+      <p>El cardio mejora tu salud cardíaca, ayuda a quemar grasa y aumenta tu resistencia física.</p>
+      <a href="#" aria-label="Leer más sobre beneficios del ejercicio cardiovascular">Leer más</a>
+    </article>
+  </section>
+
+  <!-- SECCIÓN PROMOCIONES -->
+  <section aria-labelledby="promo-title">
+    <h3 id="promo-title">Promociones del Mes</h3>
+    <div style="max-width: 700px; margin: 0 auto; background: #ffebee; border: 2px solid #d32f2f; border-radius: 10px; padding: 1rem; text-align: center;">
+      <strong>¡Inscríbete hoy y obtén 20% de descuento en tu primera membresía mensual!</strong>
+      <br />
+      <button class="btn-primary" onclick="alert('Gracias por interesarte, pronto te contactaremos')">Comprar membresía</button>
+    </div>
+  </section>
+
+  <!-- SECCIÓN REFERIDOS Y CUPONES (Simulada) -->
+  <section aria-labelledby="referidos-title">
+    <h3 id="referidos-title">Sistema de Referidos y Cupones</h3>
+    <p style="max-width: 700px; margin: 0 auto; text-align: center;">
+      Trae un amigo y recibe un mes gratis. Usa tu código único para descuentos especiales en nuestras membresías.
+      (Funcionalidad en desarrollo).
+    </p>
+  </section>
+
+  <!-- SECCIÓN MAPA -->
+  <section aria-labelledby="mapa-title">
+    <h3 id="mapa-title">Dónde Encontrarnos</h3>
+    <div style="max-width: 700px; margin: 0 auto;">
+      <iframe 
+        title="Mapa de FAITHGYM en Chihuahua"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.837394214129!2d-106.07842538468615!3d28.62654098239749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e761acb9f4eeab%3A0x150f5be8d37d0f6b!2sCalle%20Izalco%201202%2C%20Chihuahua%2C%20Chih.%2C%20Mexico!5e0!3m2!1ses-419!2sus!4v1688689394765!5m2!1ses-419!2sus" 
+        width="100%" 
+        height="350" 
+        style="border:0; border-radius: 10px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- SECCIÓN TESTIMONIOS -->
+  <section aria-labelledby="testimonios-title">
+    <h3 id="testimonios-title">Testimonios de Nuestros Clientes</h3>
+    <div class="testimonials">
+      <blockquote class="testimonial" tabindex="0">
+        "Desde que comencé en FAITHGYM, mi salud y energía han mejorado increíblemente. ¡Los entrenadores son excepcionales!" 
+        <strong>- Ana G.</strong>
+      </blockquote>
+      <blockquote class="testimonial" tabindex="0">
+        "El ambiente es muy motivador y las clases son variadas y efectivas. Lo recomiendo al 100%." 
+        <strong>- Luis M.</strong>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- SECCIÓN NEWSLETTER -->
+  <section aria-labelledby="newsletter-title">
+    <h3 id="newsletter-title">Suscríbete a Nuestro Newsletter</h3>
+    <form aria-label="Formulario de suscripción al newsletter" onsubmit="event.preventDefault(); alert('Gracias por suscribirte!');" style="max-width:400px; margin:0 auto;">
+      <label for="email-newsletter">Correo electrónico</label>
+      <input type="email" id="email-newsletter" name="email-newsletter" required placeholder="tuemail@ejemplo.com" aria-required="true" />
+      <button type="submit">Suscribirme</button>
     </form>
-    <iframe class="mt-4 w-full rounded" src="https://www.google.com/maps?q=Calle+Izalco+1202,+Chihuahua,+Mexico&output=embed" loading="lazy"></iframe>
-  </div>
-</section>
+  </section>
 
-<!-- Footer -->
-<footer class="p-4 text-center text-gray-500 text-sm">
-  © 2025 Faith Gym. Todos los derechos reservados.
-</footer>
+  <!-- SECCIÓN FORMULARIO DE CONTACTO -->
+  <section aria-labelledby="form-contacto-title" style="margin-top: 3rem;">
+    <h3 id="form-contacto-title">Contáctanos</h3>
+    <form id="contact-form" action="#" method="POST" aria-label="Formulario de contacto" onsubmit="event.preventDefault(); alert('Mensaje enviado. Gracias por contactarnos!');" novalidate>
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Tu nombre" />
 
-<!-- WhatsApp Button -->
-<a href="https://wa.me/526144257392" target="_blank" class="fixed bottom-4 right-4 bg-green-500 rounded-full p-3 shadow-lg" aria-label="WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="w-6 h-6" viewBox="0 0 24 24"><path d="M20.52 3.48A11.89 11.89 0 0012 0a12 12 0 00-10.6 17.94L0 24l6.2-1.63A12 12 0 1020.52 3.48zm-8.5 17.46a10 10 0 01-5.1-1.38l-.36-.22-3.69.97.99-3.59-.23-.37a10 10 0 1118.89-5.41A10 10 0 0112 20.94z"/><path d="M17.43 14.37c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.14-.64.15-.19.29-.74.94-.9 1.13-.17.19-.34.21-.63.07-.29-.14-1.23-.45-2.34-1.43-.86-.77-1.43-1.72-1.59-2-.16-.28-.02-.43.12-.57.13-.13.29-.34.43-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.55-.88-2.13-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.36s-1 1-.98 2.44c.02 1.43 1 2.8 1.14 3 .14.19 1.96 3 4.73 4.22.66.29 1.17.46 1.57.59.66.21 1.26.18 1.74.11.53-.08 1.7-.69 1.94-1.35.24-.66.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/></svg>
-</a>
+      <label for="correo">Correo electrónico</label>
+      <input type="email" id="correo" name="correo" required aria-required="true" placeholder="tuemail@ejemplo.com" />
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true" placeholder="Escribe tu mensaje aquí"></textarea>
+
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <!-- SIMULACIÓN DE PANEL DE USUARIO -->
+  <section aria-labelledby="panel-usuario-title" style="margin-top: 3rem;">
+    <h3 id="panel-usuario-title">Panel de Usuario (Simulado)</h3>
+    <p style="max-width: 600px; margin: 0 auto; text-align: center;">
+      Aquí podrás ver tu historial de clases, membresías y progreso personal cuando te registres en nuestra plataforma.
+      (Funcionalidad en desarrollo).
+    </p>
+  </section>
+
+  <!-- SIMULACIÓN DE CHATBOT -->
+  <section aria-labelledby="chatbot-title" style="margin-top: 3rem;">
+    <h3 id="chatbot-title">Chatbot de IA</h3>
+    <p style="max-width: 600px; margin: 0 auto; text-align: center;">
+      ¿Tienes dudas? Nuestro chatbot inteligente estará disponible pronto para ayudarte 24/7.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>© 2025 FAITHGYM - Calle Izalco 1202, Chihuahua, México - Tel: <a href="tel:+6144257392">614 425 7392</a></p>
+    <p><a href="#contacto">Política de privacidad</a> | <a href="#contacto">Aviso legal</a> | <a href="#contacto">Cookies</a></p>
+  </footer>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/5216144257392" target="_blank" rel="noopener" aria-label="Contactar FAITHGYM por WhatsApp" id="whatsapp-btn">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M20.52 3.48A11.77 11.77 0 0012 0C5.37 0 0 5.37 0 12a11.87 11.87 0 001.64 6L0 24l6-1.64A11.87 11.87 0 0012 24c6.63 0 12-5.37 12-12a11.77 11.77 0 00-3.48-8.52zm-8.18 17.23c-1.95 0-3.79-.53-5.4-1.54l-.39-.23-3.2.86.85-3.12-.25-.4A8.91 8.91 0 013.25 12c0-4.93 4.02-8.95 8.95-8.95 2.39 0 4.63.93 6.32 2.62a8.86 8.86 0 012.62 6.33c0 4.93-4.03 8.95-8.95 8.95zm4.99-6.53c-.27-.14-1.6-.79-1.84-.88-.25-.09-.43-.13-.62.14s-.71.88-.87 1.06c-.16.18-.32.2-.6.07a6.32 6.32 0 01-1.87-1.15 7.15 7.15 0 01-1.32-1.64c-.14-.24-.02-.37.12-.51.12-.12.27-.3.4-.46.13-.16.17-.27.25-.45.08-.18.04-.34-.02-.48-.06-.14-.62-1.5-.85-2.06-.22-.54-.45-.46-.62-.47-.16 0-.34-.01-.52-.01s-.48.07-.73.34c-.25.26-.95.93-.95 2.26 0 1.33.97 2.61 1.1 2.79.14.18 1.9 2.9 4.6 4.07a16.05 16.05 0 002.2.9c.29.11.56.18.76.11.23-.08.71-.29.9-.58.2-.29.2-.54.14-.58-.07-.04-.25-.14-.52-.27z"></path>
+    </svg>
+  </a>
 
 </body>
 </html>
+

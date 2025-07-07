@@ -605,21 +605,45 @@
   </section>
 
   <!-- SECCIÓN FORMULARIO DE CONTACTO -->
-  <section aria-labelledby="form-contacto-title" style="margin-top: 3rem;">
-    <h3 id="form-contacto-title">Contáctanos</h3>
-    <form id="contact-form" action="#" method="POST" aria-label="Formulario de contacto" onsubmit="event.preventDefault(); alert('Mensaje enviado. Gracias por contactarnos!');" novalidate>
-      <label for="nombre">Nombre completo</label>
-      <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Tu nombre" />
+ <section aria-labelledby="form-contacto-title" style="margin-top: 3rem;">
+  <h3 id="form-contacto-title">Contáctanos</h3>
+  <form id="contact-form" action="https://script.google.com/macros/s/AKfycbyzyx0iENUfkHEuvhimDP8GLbZc7Qvhkz3yaUbRX80fVsa7EJgRgrtEinGa3Lrsels2/exec" method="POST" aria-label="Formulario de contacto" novalidate>
+    <label for="nombre">Nombre completo</label>
+    <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Tu nombre" />
 
-      <label for="correo">Correo electrónico</label>
-      <input type="email" id="correo" name="correo" required aria-required="true" placeholder="tuemail@ejemplo.com" />
+    <label for="correo">Correo electrónico</label>
+    <input type="email" id="correo" name="correo" required aria-required="true" placeholder="tuemail@ejemplo.com" />
 
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true" placeholder="Escribe tu mensaje aquí"></textarea>
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true" placeholder="Escribe tu mensaje aquí"></textarea>
 
-      <button type="submit">Enviar mensaje</button>
-    </form>
-  </section>
+    <button type="submit">Enviar mensaje</button>
+  </form>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors' // evita problemas CORS, pero no permite recibir respuesta
+    })
+    .then(() => {
+      alert('Mensaje enviado. Gracias por contactarnos!');
+      form.reset();
+    })
+    .catch(() => {
+      alert('Error al enviar el mensaje, por favor intenta más tarde.');
+    });
+  });
+</script>
+
 
   <!-- SIMULACIÓN DE PANEL DE USUARIO -->
   <section aria-labelledby="panel-usuario-title" style="margin-top: 3rem;">

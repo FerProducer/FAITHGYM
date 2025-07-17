@@ -41,7 +41,7 @@
 
     /* HEADER */
     header {
-      background: #d32f2f; /* rojo enérgico */
+      background: #000; /* rojo enérgico */
       color: white;
       padding: 1rem 0;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -79,6 +79,13 @@
       outline: 2px solid #fff;
       outline-offset: 2px;
     }
+    header h1 .faith {
+  color: white;
+}
+
+header h1 .gym {
+  color: #d32f2f; /* negro */
+}
 
     /* HERO */
     .hero {
@@ -133,6 +140,7 @@
       color: white;
       outline: none;
     }
+    
 
     /* SECCIONES */
     section {
@@ -419,7 +427,9 @@
   <!-- HEADER -->
   <header role="banner">
     <div class="container">
-      <h1 tabindex="0" aria-label="FAITHGYM - Gimnasio en Chihuahua">FAITHGYM</h1>
+     <h1 tabindex="0" aria-label="FAITHGYM - Gimnasio en Chihuahua">
+  <span class="faith">FAITH</span><span class="gym">GYM</span>
+</h1>
       <nav role="navigation" aria-label="Menú principal">
         <ul>
           <li><a href="#clases">Clases</a></li>
@@ -678,4 +688,6 @@
 
 </body>
 </html>
+
+
 
